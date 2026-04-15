@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#690005",
+              "outline-variant": "#414942",
+              "surface": "#131313",
+              "background": "#131313",
+              "secondary-container": "#544515",
+              "on-primary-container": "#EDE5D4",
+              "on-tertiary": "#343025",
+              "surface-container-lowest": "#0e0e0e",
+              "tertiary-fixed": "#eae2d1",
+              "inverse-primary": "#3c6848",
+              "tertiary": "#cdc6b6",
+              "on-tertiary-fixed": "#1f1b11",
+              "primary-fixed": "#bdeec6",
+              "primary-container": "#1E4A2D",
+              "outline": "#8b938a",
+              "tertiary-fixed-dim": "#cdc6b6",
+              "surface-container-low": "#1b1c1c",
+              "on-primary": "#EDE5D4",
+              "on-secondary-fixed-variant": "#544515",
+              "primary-fixed-dim": "#a2d2ab",
+              "surface-container-high": "#2a2a2a",
+              "secondary-fixed-dim": "#B8A36A",
+              "error-container": "#93000a",
+              "on-secondary-container": "#c9b379",
+              "inverse-surface": "#e4e2e1",
+              "on-secondary": "#1E4A2D",
+              "surface-bright": "#393939",
+              "on-background": "#e4e2e1",
+              "primary": "#1E4A2D",
+              "on-surface-variant": "#c1c9bf",
+              "surface-tint": "#a2d2ab",
+              "on-surface": "#e4e2e1",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed": "#241a00",
+              "surface-variant": "#353535",
+              "secondary": "#B8A36A",
+              "on-primary-fixed": "#00210d",
+              "inverse-on-surface": "#303030",
+              "on-tertiary-fixed-variant": "#4b463a",
+              "secondary-fixed": "#f9e1a2",
+              "tertiary-container": "#454135",
+              "surface-container-highest": "#353535",
+              "on-tertiary-container": "#b4ad9e",
+              "error": "#ffb4ab",
+              "surface-dim": "#131313",
+              "surface-container": "#1f2020",
+              "on-primary-fixed-variant": "#244f32"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #131313;
+        color: #e4e2e1;
+        scroll-behavior: smooth;
+      }
+      
+      /* Scroll Reveal Styles */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1.2s cubic-bezier(0.2, 0, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0, 0.2, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Sophisticated Animations */
+      .reveal-slide-right {
+        opacity: 0;
+        transform: translateX(60px);
+        transition: opacity 1.4s cubic-bezier(0.2, 0, 0.2, 1), transform 1.4s cubic-bezier(0.2, 0, 0.2, 1);
+      }
+      .reveal-slide-right.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .reveal-fade-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s cubic-bezier(0.2, 0, 0.2, 1), transform 1s cubic-bezier(0.2, 0, 0.2, 1);
+      }
+      .reveal-fade-up.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .delay-100 { transition-delay: 100ms; }
+      .delay-200 { transition-delay: 200ms; }
+      .delay-300 { transition-delay: 300ms; }
+      .delay-400 { transition-delay: 400ms; }
+      .delay-500 { transition-delay: 500ms; }
+      .delay-600 { transition-delay: 600ms; }
+      .delay-700 { transition-delay: 700ms; }
+      .delay-800 { transition-delay: 800ms; }
+
+      /* Sticky Header Reveal Animation */
+      .nav-hidden {
+        transform: translateY(-100%);
+      }
+      .sticky-nav-active {
+        background-color: rgba(19, 19, 19, 0.95) !important;
+        border-bottom: 1px solid rgba(184, 163, 106, 0.2);
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        backdrop-filter: blur(12px);
+      }
+    </style>
+</head>
+<body class="font-body selection:bg-secondary/30 selection:text-secondary" id="inicio">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-transparent transition-all duration-500 py-6" id="main-nav">
+<div class="flex justify-between items-center px-12 max-w-screen-2xl mx-auto font-headline font-medium tracking-wide">
+<div class="flex items-center gap-4">
+<img alt="Instituto Sequóia Logo" class="h-12 w-12 object-contain rounded-full border border-secondary/30" src="https://lh3.googleusercontent.com/aida/ADBb0ujuBsnWn1bE2jXgUwsHxa-c17GugpKhFTvoFbuAKoDp4Wni5rjSsVhbYdHhWqaizrEi-tVNalpgsialOniHvu_aN_KlYQjZyTLj3GTvNYvySRdmRSE8ntiP3zTyFEymdiMEpKUXv1zCVuYKStU_ZPoRHLbj9kMGEbYRuaBsdjEMyKXV72bJgeSYYY2jgmUqeaLESPWDb-mfpfYEyH076cKCleQ_cyUfdDrjePeQT8LEBLaoMntEF63Z4QxebFe0Lcu6ayvczBKKDA"/>
+<div class="text-xl md:text-2xl font-bold text-secondary uppercase tracking-widest">
+                Instituto Sequóia
+            </div>
+</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 transition-colors duration-300" href="#inicio">Início</a>
+<a class="text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#especialidades">Especialidades</a>
+<a class="text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#metodologias">Serviços</a>
+<a class="text-on-surface opacity-80 hover:text-secondary transition-colors duration-300" href="#sobre-nos">Sobre Nós</a>
+</div>
+<button class="bg-secondary text-primary px-8 py-3 rounded-sm font-label text-sm uppercase tracking-widest scale-95 active:scale-90 transition-all hover:bg-[#c9b379]">
+            Agendar Consulta
+        </button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" data-alt="Stunning low angle shot of ancient sequoia trees reaching towards the sunlight in a misty, ethereal forest with deep green and golden hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSDskDm3oR_T2CVnh0a5vSgDogAeIGTJ_5tNDn37ur4SRxI-S2NpA5wGqa7pad2WJOyRK31pn9t5GsPoesXPum44sfn2pc7e_M2NQk9PjcuYEOO1jIxwNXyCqNWLa1OeB7yKAHeTsKOkASqz9O6ifXcunqGuHlIZzz2wFIli4vZKKAmBvIQUof6cepHnpaxcEv9wvFpr05Ep7QpMADupIzqc-tW-F-Z2-ihg-jqiqZoRkX-7dNldJ6wbJMLuG1nzRVJJ1OKzr4MU0"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/40 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-screen-2xl mx-auto px-12 w-full">
+<div class="max-w-3xl reveal active">
+<span class="text-secondary font-label tracking-[0.3em] uppercase text-sm mb-6 block">Raízes Fortes. Vida Longa.</span>
+<h1 class="text-7xl md:text-8xl font-headline font-bold text-on-surface leading-tight mb-8">
+                    Raízes fortes.<br/>
+<span class="italic font-normal text-secondary">Vida longa.</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-xl mb-12 leading-relaxed font-light">
+                    A excelência clínica em Nutrição e Performance para quem busca a longevidade através do rigor científico e cuidado personalizado.
+                </p>
+<div class="flex items-center gap-8">
+<button class="bg-primary-container text-on-primary-container px-10 py-5 rounded-sm text-sm uppercase tracking-[0.2em] font-bold hover:brightness-110 transition-all border border-secondary/20">
+                        Agendar Atendimento
+                    </button>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-xs uppercase tracking-widest">Padrão de Cuidado Premium</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Introduction Section -->
+<section class="py-32 bg-surface overflow-hidden" id="sobre-nos">
+<div class="max-w-screen-2xl mx-auto px-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+<div class="space-y-8 reveal">
+<h2 class="text-4xl font-headline text-on-surface leading-snug">O Instituto Sequóia redefine o limite do potencial humano através da saúde integral.</h2>
+<div class="w-24 h-px bg-secondary/30"></div>
+<p class="text-on-surface-variant text-lg leading-relaxed font-light">
+                        Inspirados na resiliência e longevidade das Sequóias, criamos um santuário de saúde onde a ciência moderna encontra o atendimento personalizado. Nossa abordagem não foca apenas em resultados imediatos, mas na construção de uma base sólida para décadas de vitalidade.
+                    </p>
+<img class="w-32 opacity-40 reveal delay-200" data-alt="Close-up detail of a Sequoia leaf with intricate patterns and golden morning dew drops, macro photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqkQv7ZJWo7XsCuBKxltFULxvbvI5y9Y0HlmPVAIn-AxeiU-zqq5Kmlia-LGBSNc9QBIO35iBFYCbpyeAJc5_RBUM9umaIsmn7GaCF1V7CQ5eiu-tSlDQwwRlXrxl2IpkahdXKFF56dQWg-OcpJqsVRqMY9FAnGnuQcAo8dJKQLSeQuM3jqzA8uxxS9eZ6nThzynHB4-Rd4ndTybba210KG4ksnRALSaH3a3vD9I3ySNt1RkW8j2X8nWc7UK_pO2JhDbuWtSm7FEY"/>
+</div>
+<div class="relative reveal delay-300">
+<img class="w-full h-[600px] object-cover rounded-sm" data-alt="Ultra-modern clinical consultation room with minimalist wood furniture, warm ambient lighting, and high-end medical equipment in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsrHaZMViIK88QtB3PsAnrc3b6V_DOnDA5mUyYcVCb-pVzrXaIZ2cVGe1dyBKfFpoVFatn7dkPVjHvnuXiF8C0UZhm0CS4zDbgzZTvffbDl2HGV3LjHYhNjxT0KZyiUJE937QcFoSgXjeBzzuC2GSh4maIskVEDy0L7dFXpav-YLZMHN2Tk8lZkWJLiNaPDr_F1ZH-z0Df4n3P0byL6m3tM6BYw2T_VY7z3nPakPfHpJWA8ZGuTxMEGZOYsshjqqLWIdDru_h1Nx4"/>
+<div class="absolute -bottom-12 -left-12 bg-primary-container p-12 max-w-xs reveal delay-500 border border-secondary/20">
+<p class="text-secondary font-headline italic text-2xl">"Sua saúde é o seu maior legado."</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Specialties Section -->
+<section class="py-32 bg-surface-container-lowest" id="especialidades">
+<div class="max-w-screen-2xl mx-auto px-12">
+<div class="text-center mb-24 reveal">
+<span class="text-secondary font-label tracking-[0.2em] uppercase text-xs block mb-4">Nossa Expertise</span>
+<h2 class="text-5xl font-headline text-on-surface">Especialidades Clínicas</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+<!-- Esportiva -->
+<div class="reveal group bg-surface-container-low p-12 border border-outline-variant/10 hover:border-secondary/30 transition-all duration-500 relative overflow-hidden flex flex-col h-full">
+<div class="mb-8 flex justify-between items-start relative z-10">
+<span class="material-symbols-outlined text-5xl text-secondary">fitness_center</span>
+<span class="text-outline/10 text-7xl font-headline font-bold">01</span>
+</div>
+<h3 class="text-2xl font-headline mb-6 group-hover:text-secondary transition-colors relative z-10">Esportiva</h3>
+<p class="text-on-surface-variant font-light leading-relaxed relative z-10">Otimização da performance física, composição corporal e recuperação muscular para atletas e entusiastas de alto nível.</p>
+<div class="absolute bottom-0 left-0 w-1 h-0 bg-secondary transition-all duration-500 group-hover:h-full"></div>
+</div>
+<!-- Emagrecimento -->
+<div class="reveal delay-100 group bg-primary-container p-12 border border-secondary/10 hover:border-secondary transition-all duration-500 relative overflow-hidden flex flex-col h-full">
+<div class="mb-8 flex justify-between items-start relative z-10">
+<span class="material-symbols-outlined text-5xl text-secondary">monitoring</span>
+<span class="text-on-primary-container/10 text-7xl font-headline font-bold">02</span>
+</div>
+<h3 class="text-2xl font-headline mb-6 text-on-primary-container relative z-10">Emagrecimento</h3>
+<p class="text-on-primary-container/80 font-light leading-relaxed relative z-10">Protocolos personalizados focados na perda de gordura sustentável com preservação da massa magra e saúde metabólica integral.</p>
+<div class="absolute top-0 right-0 w-0 h-1 bg-secondary transition-all duration-500 group-hover:w-full"></div>
+</div>
+<!-- Doenças Crônicas -->
+<div class="reveal delay-200 group bg-surface-container-low p-12 border border-outline-variant/10 hover:border-secondary/30 transition-all duration-500 relative overflow-hidden flex flex-col h-full">
+<div class="mb-8 flex justify-between items-start relative z-10">
+<span class="material-symbols-outlined text-5xl text-secondary">clinical_notes</span>
+<span class="text-outline/10 text-7xl font-headline font-bold">03</span>
+</div>
+<h3 class="text-2xl font-headline mb-6 group-hover:text-secondary transition-colors relative z-10">Doenças Crônicas</h3>
+<p class="text-on-surface-variant font-light leading-relaxed relative z-10">Manejo nutricional avançado para diabetes, hipertensão e condições que exigem rigor clínico e acompanhamento especializado.</p>
+<div class="absolute bottom-0 left-0 w-1 h-0 bg-secondary transition-all duration-500 group-hover:h-full"></div>
+</div>
+<!-- Tentantes e Gestantes -->
+<div class="reveal group bg-surface-container-low p-12 border border-outline-variant/10 hover:border-secondary/30 transition-all duration-500 relative overflow-hidden flex flex-col h-full">
+<div class="mb-8 flex justify-between items-start relative z-10">
+<span class="material-symbols-outlined text-5xl text-secondary">pregnant_woman</span>
+<span class="text-outline/10 text-7xl font-headline font-bold">04</span>
+</div>
+<h3 class="text-2xl font-headline mb-6 group-hover:text-secondary transition-colors relative z-10">Tentantes e Gestantes</h3>
+<p class="text-on-surface-variant font-light leading-relaxed relative z-10">Nutrição especializada para fertilidade, gestação saudável e programação metabólica fetal de excelência absoluta.</p>
+<div class="absolute bottom-0 left-0 w-1 h-0 bg-secondary transition-all duration-500 group-hover:h-full"></div>
+</div>
+<!-- Pediatria -->
+<div class="reveal delay-100 group bg-surface-container-low p-12 border border-outline-variant/10 hover:border-secondary/30 transition-all duration-500 relative overflow-hidden flex flex-col h-full">
+<div class="mb-8 flex justify-between items-start relative z-10">
+<span class="material-symbols-outlined text-5xl text-secondary">child_care</span>
+<span class="text-outline/10 text-7xl font-headline font-bold">05</span>
+</div>
+<h3 class="text-2xl font-headline mb-6 group-hover:text-secondary transition-colors relative z-10">Pediatria</h3>
+<p class="text-on-surface-variant font-light leading-relaxed relative z-10">Acompanhamento do desenvolvimento infantil, criando bases sólidas de saúde e longevidade desde a primeira infância.</p>
+<div class="absolute bottom-0 left-0 w-1 h-0 bg-secondary transition-all duration-500 group-hover:h-full"></div>
+</div>
+<!-- Saúde da Mulher -->
+<div class="reveal delay-200 group bg-surface-container-low p-12 border border-outline-variant/10 hover:border-secondary/30 transition-all duration-500 relative overflow-hidden flex flex-col h-full">
+<div class="mb-8 flex justify-between items-start relative z-10">
+<span class="material-symbols-outlined text-5xl text-secondary">female</span>
+<span class="text-outline/10 text-7xl font-headline font-bold">06</span>
+</div>
+<h3 class="text-2xl font-headline mb-6 group-hover:text-secondary transition-colors relative z-10">Saúde da Mulher</h3>
+<p class="text-on-surface-variant font-light leading-relaxed relative z-10">Equilíbrio hormonal, menopausa e saúde integrativa feminina focada em cada transição e fase específica da vida.</p>
+<div class="absolute bottom-0 left-0 w-1 h-0 bg-secondary transition-all duration-500 group-hover:h-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="py-32 bg-surface overflow-hidden">
+<div class="max-w-screen-2xl mx-auto px-12">
+<div class="text-center mb-24 reveal">
+<span class="text-secondary font-label tracking-[0.2em] uppercase text-xs block mb-4">Corpo Clínico</span>
+<h2 class="text-5xl font-headline text-on-surface mb-6">Nossa Equipe de Nutricionistas</h2>
+<div class="inline-flex items-center gap-3 px-6 py-2 bg-primary-container/30 border border-secondary/20 rounded-full">
+<span class="material-symbols-outlined text-secondary text-sm">verified_user</span>
+<span class="text-xs uppercase tracking-widest text-on-primary-container font-medium">Equipe 100% Nutricionistas</span>
+</div>
+</div>
+<div class="max-w-5xl mx-auto space-y-24">
+<!-- Profile 1 -->
+<div class="grid grid-cols-1 md:grid-cols-[400px_1fr] gap-12 items-center bg-surface-container-low border border-outline-variant/20 overflow-hidden">
+<div class="relative h-[500px] md:h-full reveal-slide-right">
+<img class="w-full h-full object-cover" data-alt="Portrait of a professional nutritionist in a sophisticated clinical setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz-R8KEzx-UlVgMbMIeBS8uccDHqtyJM4WeW5yZtoZCongIFzojIbzBUyAjFQUP8apGk6dbM6FhVpdWCiRPptoITMyv9RMupjfK6yjQaCIwVS6cyEdKv7VvNiejf0cQoFea1nB41ZObFUOpwjhFXtV_dTrnVl0HZZoNFlmek5aXJViiRlsNW4DEK6v1HJ82QpEWdCjP-u009SltO9dA8n6T0mv5223w-n9SfkOXh8QO-9RvU2eR3rqSy79kZvsp8c8uZ7bGipPKuk"/>
+<div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-primary-container to-transparent reveal-fade-up delay-300">
+<h3 class="text-2xl font-headline text-on-primary-container">Dra. Beatriz Menezes</h3>
+<p class="text-secondary text-sm uppercase tracking-widest mt-1">Nutricionista Clínica &amp; Genômica</p>
+</div>
+</div>
+<div class="p-12 md:pr-16 space-y-6">
+<div class="reveal-fade-up delay-500">
+<p class="text-lg text-on-surface-variant font-light leading-relaxed">
+                            Especialista em Nutrição de Precisão com doutorado pela USP, a Dra. Beatriz lidera nossa frente de longevidade. Sua abordagem integra dados genéticos e bioquímicos para criar estratégias alimentares.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-4 reveal-fade-up delay-600">
+<span class="px-4 py-1 border border-secondary/30 text-secondary text-[10px] uppercase tracking-tighter">Longevidade</span>
+<span class="px-4 py-1 border border-secondary/30 text-secondary text-[10px] uppercase tracking-tighter">Nutrigenética</span>
+<span class="px-4 py-1 border border-secondary/30 text-secondary text-[10px] uppercase tracking-tighter">Performance</span>
+</div>
+<div class="pt-6 reveal-fade-up delay-700">
+<a class="text-secondary text-sm font-bold uppercase tracking-widest border-b border-secondary pb-1 hover:text-on-surface hover:border-on-surface transition-colors" href="#">Conhecer Perfil Completo</a>
+</div>
+</div>
+</div>
+<!-- Profile 2 -->
+<div class="grid grid-cols-1 md:grid-cols-[400px_1fr] gap-12 items-center bg-surface-container-low border border-outline-variant/20 overflow-hidden">
+<div class="relative h-[500px] md:h-full reveal-slide-right">
+<img class="w-full h-full object-cover" data-alt="Portrait of a fit male nutritionist specialist in sports performance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8Hjh4eNB9DPwClPdD7P1lfgEj5VrBdltKWaP2eGjsoL5QAU2IxwVVLo-7hcCsNCDqxzOUs0dvcZ-7jNDREFsEVOVT33OzNyR37tjIkiH6dWOrgV_siGPdc-79F92szy_LiMInmksjMsW-pRuOB0X1Qiv_ZAqnNW5zS7sZKVVgqDD7uem5s2mZgbK2QDsfbIpABxYHsl_pFAagPtPbQstjnf1F7GdsMSOKk4IfFMlKSczWO9UR-hqvXQgjX5QxU_3Wdj8Ngy3NiFI"/>
+<div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-primary-container to-transparent reveal-fade-up delay-300">
+<h3 class="text-2xl font-headline text-on-primary-container">Dr. Ricardo Santos</h3>
+<p class="text-secondary text-sm uppercase tracking-widest mt-1">Nutricionista Esportivo de Elite</p>
+</div>
+</div>
+<div class="p-12 md:pr-16 space-y-6">
+<div class="reveal-fade-up delay-500">
+<p class="text-lg text-on-surface-variant font-light leading-relaxed">
+                            Com vasta experiência no acompanhamento de atletas olímpicos e executivos de alta performance, o Dr. Ricardo foca na otimização da composição corporal e recuperação muscular acelerada.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-4 reveal-fade-up delay-600">
+<span class="px-4 py-1 border border-secondary/30 text-secondary text-[10px] uppercase tracking-tighter">Alta Performance</span>
+<span class="px-4 py-1 border border-secondary/30 text-secondary text-[10px] uppercase tracking-tighter">Metabolismo</span>
+<span class="px-4 py-1 border border-secondary/30 text-secondary text-[10px] uppercase tracking-tighter">Suplementação</span>
+</div>
+<div class="pt-6 reveal-fade-up delay-700">
+<a class="text-secondary text-sm font-bold uppercase tracking-widest border-b border-secondary pb-1 hover:text-on-surface hover:border-on-surface transition-colors" href="#">Conhecer Perfil Completo</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Metodologias Section -->
+<section class="py-32 bg-surface-container-lowest overflow-hidden" id="metodologias">
+<div class="max-w-screen-2xl mx-auto px-12">
+<div class="flex flex-col lg:flex-row gap-20">
+<div class="w-full lg:w-1/3 space-y-12 sticky top-32 h-fit">
+<div class="reveal">
+<span class="text-secondary font-label tracking-[0.2em] uppercase text-xs block mb-4">A Jornada do Paciente</span>
+<h2 class="text-5xl font-headline leading-tight text-on-surface">Metodologias de<br/><span class="italic text-secondary">Atendimento</span></h2>
+</div>
+<div class="space-y-8">
+<div class="bg-primary-container/20 border border-secondary/20 p-6 rounded-sm reveal">
+<img alt="InBody 270 BIA machine" class="w-full h-auto object-contain mb-4 filter drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida/ADBb0ugjvwxs64R7or4ZGi7yLsbO887VHgX-lhSltQRaMCK07-3CrdKm6X6q0M4A2zsRus6vjD5Al8blxvfAvo77Ey9mVVbTpVP7hBK2kspBuO97B4YH9-veNcGR9KLo8WigvF7LEZWDACsfTL9CkPgzMPDuCA4BL9qOpUlSQldhc3ySO0S4ZsBmqjl_jKVsDu8L7rKdf_zxmb0HnJeu_eGA0IhHxfENuxYRQLwR-UrmXz8zYGAQbsXG1T6-d6Gq5JHxCQX_6NQullxkmQ"/>
+<p class="text-xs uppercase tracking-widest text-on-primary-container text-center font-bold">Bioimpedância InBody 270</p>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-2/3">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+<div class="group flex gap-6 pb-8 border-b border-outline-variant/10 reveal"><span class="text-secondary font-headline text-4xl opacity-40 group-hover:opacity-100 transition-opacity">01</span><div><h4 class="text-lg font-bold text-on-surface mb-2">Acolhimento</h4><p class="text-sm text-on-surface-variant font-light leading-relaxed">Primeiro contato para alinhar logística do seu acompanhamento exclusivo.</p></div></div>
+<div class="group flex gap-6 pb-8 border-b border-outline-variant/10 reveal delay-100"><span class="text-secondary font-headline text-4xl opacity-40 group-hover:opacity-100 transition-opacity">02</span><div><h4 class="text-lg font-bold text-on-surface mb-2">Anamnese</h4><p class="text-sm text-on-surface-variant font-light leading-relaxed">Investigação profunda de histórico clínico e hábitos alimentares.</p></div></div>
+<div class="group flex gap-6 pb-8 border-b border-outline-variant/10 reveal delay-200"><span class="text-secondary font-headline text-4xl opacity-40 group-hover:opacity-100 transition-opacity">03</span><div><h4 class="text-lg font-bold text-on-surface mb-2">Avaliação Física</h4><p class="text-sm text-on-surface-variant font-light leading-relaxed">Mapeamento detalhado das medidas corporais com protocolos de excelência.</p></div></div>
+<div class="group flex gap-6 pb-8 border-b border-outline-variant/10 reveal delay-300"><span class="text-secondary font-headline text-4xl opacity-40 group-hover:opacity-100 transition-opacity">04</span><div><h4 class="text-lg font-bold text-on-surface mb-2">Bioimpedância</h4><p class="text-sm text-on-surface-variant font-light leading-relaxed">Análise segmentada da composição corporal com tecnologia InBody 270.</p></div></div>
+<div class="group flex gap-6 pb-8 border-b border-outline-variant/10 reveal"><span class="text-secondary font-headline text-4xl opacity-40 group-hover:opacity-100 transition-opacity">05</span><div><h4 class="text-lg font-bold text-on-surface mb-2">Adipometria</h4><p class="text-sm text-on-surface-variant font-light leading-relaxed">Medição rigorosa de pregas cutâneas para percentual de gordura exato.</p></div></div>
+<div class="group flex gap-6 pb-8 border-b border-outline-variant/10 reveal delay-100"><span class="text-secondary font-headline text-4xl opacity-40 group-hover:opacity-100 transition-opacity">06</span><div><h4 class="text-lg font-bold text-on-surface mb-2">Análise Bioquímica</h4><p class="text-sm text-on-surface-variant font-light leading-relaxed">Interpretação minuciosa de exames laboratoriais e testes genéticos.</p></div></div>
+<div class="group flex gap-6 pb-8 border-b border-outline-variant/10 reveal delay-200"><span class="text-secondary font-headline text-4xl opacity-40 group-hover:opacity-100 transition-opacity">07</span><div><h4 class="text-lg font-bold text-on-surface mb-2">Diagnóstico</h4><p class="text-sm text-on-surface-variant font-light leading-relaxed">Conclusão técnica baseada em evidências para nortear a estratégia clínica.</p></div></div>
+<div class="group flex gap-6 pb-8 border-b border-outline-variant/10 reveal delay-300"><span class="text-secondary font-headline text-4xl opacity-40 group-hover:opacity-100 transition-opacity">08</span><div><h4 class="text-lg font-bold text-on-surface mb-2">Prescrição</h4><p class="text-sm text-on-surface-variant font-light leading-relaxed">Plano alimentar exclusivo adaptado à sua rotina e preferências reais.</p></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section (Static) -->
+<section class="py-32 bg-primary-container overflow-hidden" id="contato">
+<div class="max-w-screen-2xl mx-auto px-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+<div class="text-on-primary-container">
+<h2 class="text-5xl font-headline mb-8">Inicie sua jornada para a longevidade hoje.</h2>
+<p class="text-on-primary-container/70 text-lg mb-12 font-light max-w-md">Estamos prontos para desenhar o seu mapa de saúde personalizada. Entre em contato para uma consulta inicial.</p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<span class="font-light">Av. Paulista, 2000 - São Paulo, SP</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">mail</span>
+<span class="font-light">contato@institutosequoia.com.br</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">phone_iphone</span>
+<span class="font-light">+55 (11) 99999-8888</span>
+</div>
+</div>
+</div>
+<div class="bg-surface p-12 shadow-2xl border border-secondary/10">
+<form class="space-y-8">
+<div class="space-y-2">
+<label class="text-xs uppercase tracking-widest text-on-surface-variant">Nome Completo</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-secondary transition-colors text-on-surface py-2" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs uppercase tracking-widest text-on-surface-variant">E-mail Corporativo</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-secondary transition-colors text-on-surface py-2" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs uppercase tracking-widest text-on-surface-variant">Área de Interesse</label>
+<select class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-secondary transition-colors text-on-surface py-2 appearance-none">
+<option class="bg-surface">Longevidade</option>
+<option class="bg-surface">Performance Esportiva</option>
+<option class="bg-surface">Emagrecimento</option>
+<option class="bg-surface">Saúde da Mulher</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs uppercase tracking-widest text-on-surface-variant">Mensagem</label>
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-secondary transition-colors text-on-surface py-2 resize-none" rows="3"></textarea>
+</div>
+<button class="w-full bg-secondary text-primary font-bold text-sm uppercase tracking-[0.2em] py-5 hover:brightness-110 transition-all">
+                            Solicitar Atendimento
+                        </button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Static) -->
+<footer class="w-full py-16 px-12 bg-primary-container font-body text-sm tracking-[0.02em]">
+<div class="flex flex-col md:flex-row justify-between items-start gap-12 max-w-screen-2xl mx-auto border-t border-secondary/10 pt-16">
+<div class="max-w-sm">
+<span class="text-xl font-headline text-secondary mb-4 block">Instituto Sequóia</span>
+<p class="text-on-primary-container opacity-60 leading-relaxed">
+                Elevando os padrões de saúde e longevidade através de ciência rigorosa e cuidado personalizado.
+            </p>
+</div>
+<div class="grid grid-cols-2 gap-24">
+<div class="flex flex-col gap-4">
+<span class="text-secondary font-bold uppercase tracking-widest text-xs mb-2">Explorar</span>
+<a class="text-on-primary-container opacity-60 hover:text-secondary hover:opacity-100 transition-all" href="#inicio">Início</a>
+<a class="text-on-primary-container opacity-60 hover:text-secondary hover:opacity-100 transition-all" href="#especialidades">Especialidades</a>
+<a class="text-on-primary-container opacity-60 hover:text-secondary hover:opacity-100 transition-all" href="#metodologias">Metodologia</a>
+<a class="text-on-primary-container opacity-60 hover:text-secondary hover:opacity-100 transition-all" href="#sobre-nos">Sobre Nós</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-secondary font-bold uppercase tracking-widest text-xs mb-2">Legal</span>
+<a class="text-on-primary-container opacity-60 hover:text-secondary hover:opacity-100 transition-all" href="#">Privacidade</a>
+<a class="text-on-primary-container opacity-60 hover:text-secondary hover:opacity-100 transition-all" href="#">Termos</a>
+<a class="text-on-primary-container opacity-60 hover:text-secondary hover:opacity-100 transition-all" href="#">Carreiras</a>
+<a class="text-on-primary-container opacity-60 hover:text-secondary hover:opacity-100 transition-all" href="#">Imprensa</a>
+</div>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-24 flex justify-between items-center opacity-40 border-t border-secondary/5 pt-8">
+<p class="text-on-primary-container">© 2024 Instituto Sequóia. Raízes Fortes. Vida Longa.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-xl text-on-primary-container">share</span>
+<span class="material-symbols-outlined text-xl text-on-primary-container">camera</span>
+</div>
+</div>
+</footer>
+<script>
+    // Scroll-up-to-reveal sticky header logic
+    const nav = document.getElementById('main-nav');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        // Background color & height transition
+        if (currentScrollY > 50) {
+            nav.classList.add('sticky-nav-active');
+        } else {
+            nav.classList.remove('sticky-nav-active');
+        }
+
+        // Hide/Show logic based on scroll direction
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // Scrolling Down
+            nav.classList.add('nav-hidden');
+        } else {
+            // Scrolling Up
+            nav.classList.remove('nav-hidden');
+        }
+        
+        lastScrollY = currentScrollY;
+    });
+
+    // Intersection Observer for scroll reveal animations (Excluding Contact & Footer)
+    const revealElements = document.querySelectorAll('.reveal, .reveal-slide-right, .reveal-fade-up');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    revealElements.forEach(el => revealObserver.observe(el));
+</script>
+</body></html>
